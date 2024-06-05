@@ -13,6 +13,9 @@
 		/* this is exposed mostly to be read only, for relative item sizing. */
 		--mm-row-size: calc(100% - var(--_row-margin-start) - var(--_row-margin-end));
 
+		--_row-inset-start: max(var(--mm-gutter-start) - var(--mm-outset-start), var(--mm-gutter-start));
+		--_row-inset-end: max(var(--mm-gutter-end) - var(--mm-outset-end), var(--mm-gutter-end));
+
 		--_item-max-size: var(--mm-item-max-size, var(--_row-actual-max-size));
 		--_item-actual-size: min(var(--_item-max-size), var(--mm-row-size));
 
@@ -23,21 +26,21 @@
 
 	/* row alignment */
 	&.mm-rows-start > *, & > .mm-row-start {
-		--_row-actual-max-size: calc(var(--mm-row-max-size) + var(--mm-outset-end));
-		--_row-margin-start: var(--mm-gutter-start);
-		--_row-margin-end: max(100% - var(--_row-actual-max-size) - var(--mm-gutter-start), var(--mm-gutter-end));
+		--_row-actual-max-size: calc(var(--mm-row-max-size) + min(var(--mm-outset-start), 0px) + var(--mm-outset-end));
+		--_row-margin-start: var(--_row-inset-start);
+		--_row-margin-end: max(100% - var(--_row-actual-max-size) - var(--_row-inset-start), var(--_row-inset-end));
 	}
 
 	&.mm-rows-end > *, & > .mm-row-end {
-		--_row-actual-max-size: calc(var(--mm-row-max-size) + var(--mm-outset-start));
-		--_row-margin-start: max(100% - var(--_row-actual-max-size) - var(--mm-gutter-end), var(--mm-gutter-start));
-		--_row-margin-end: var(--mm-gutter-end);
+		--_row-actual-max-size: calc(var(--mm-row-max-size) + var(--mm-outset-start) + min(var(--mm-outset-end), 0px));
+		--_row-margin-start: max(100% - var(--_row-actual-max-size) - var(--_row-inset-end), var(--_row-inset-start));
+		--_row-margin-end: var(--_row-inset-end);
 	}
 
 	& > *, & > .mm-row-center {
 		--_row-actual-max-size: calc(var(--mm-row-max-size) + var(--mm-outset-start) + var(--mm-outset-end));
-		--_row-margin-start: max((100% - var(--mm-row-max-size)) / 2 - var(--mm-outset-start), var(--mm-gutter-start));
-		--_row-margin-end: max((100% - var(--mm-row-max-size)) / 2 - var(--mm-outset-end), var(--mm-gutter-end));
+		--_row-margin-start: max((100% - var(--mm-row-max-size)) / 2 - var(--mm-outset-start), var(--_row-inset-start));
+		--_row-margin-end: max((100% - var(--mm-row-max-size)) / 2 - var(--mm-outset-end), var(--_row-inset-end));
 	}
 
 	/* item alignment */
