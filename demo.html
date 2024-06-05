@@ -1,0 +1,111 @@
+<!doctype html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width,initial-scale=1">
+		<title>Mathy Margins demo</title>
+		<style>
+@import url("./mathy-margins.css");
+
+@layer reset {
+	* {
+		box-sizing: border-box;
+		margin: 0;
+	}
+
+	body {
+		margin: 16px 0;
+	}
+
+	img {
+		display: block;
+		inline-size: 100%;
+	}
+}
+
+body {
+	font-family: sans-serif;
+}
+
+.flow > * + * {
+	margin-block-start: 1em;
+}
+
+[alt="Saturn"] {
+	aspect-ratio: 2.5;
+	object-fit: cover;
+}
+
+aside {
+	padding: 12px;
+	--border-color: mediumseagreen;
+	--transparent: transparent;
+	@supports (color: oklch(from red l c h)) {
+		--transparent: oklch(from var(--border-color) l c h / 0);
+	}
+	border: 1px solid var(--border-color);
+	background-color: color-mix(in oklch, var(--border-color) 20%, var(--transparent));
+	border-radius: 8px;
+}
+
+img {
+	--mm-gutter: 0px;
+}
+
+blockquote {
+	font-size: 1.2rem;
+	font-family: serif;
+	font-style: italic;
+
+	--mm-item-max-size: calc(var(--mm-row-max-size) * .55);
+	--mm-outset: -3rem;
+}
+
+.special-section {
+	background-color: maroon;
+	color: white;
+	padding-block: 20px;
+}
+
+.block {
+	padding-block: 1.5rem;
+	background-color: salmon;
+}
+		</style>
+	</head>
+	<body>
+		<div class="flow">
+			<header class="flow mm-container">
+				<h1>Mathy Margins demo</h1>
+				<p>Mathy Margins is a small CSS “framework” (set of utility classes and custom properties) that handles inline layout within a block container. You can use it to easily create layout breakouts, edge-to-edge content, and more.</p>
+
+				<p><a href="https://github.com/Noleli/mathy-margins">View it on GitHub</a></p>
+
+				<hr style="--mm-outset: -16px;--mm-gutter: 32px;">
+			</header>
+			<main class="flow mm-container">
+				<p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Fugit maiores autem alias tempore corporis quae reprehenderit est velit quis impedit voluptate, adipisci ratione? Sunt, quae voluptates. Voluptatum, hic temporibus? Voluptates! Reiciendis omnis eum ab officiis ut dignissimos architecto perspiciatis asperiores quae voluptates ipsa quis magnam quisquam, animi eveniet itaque, ipsum rerum placeat.</p>
+
+				<aside class="mm-breakout"><p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolore qui dicta ullam pariatur tenetur corporis, iste deleniti minus repudi andae maiores minima praesentium! Soluta, quisquam eveniet! Ut quibusdam quas qui praesentium?</p></aside>
+
+				<p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quos et molestias fugit accusamus veniam dolore quo odio ipsam odit nam nobis quia dolor itaque earum illo, id accusantium eligendi eum.</p>
+
+				<img src="https://images.unsplash.com/photo-1614732414444-096e5f1122d5?q=80&w=2748&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="Saturn">
+
+				<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Est minus ipsa veniam ea vel officia molestias praesentium, magni fuga reprehenderit aperiam ullam maiores incidunt tempora debitis quasi omnis, quam sequi!</p>
+
+				<blockquote id="q1" class="mm-item-start">Lorem ipsum dolor sit amet consectetur adipisicing elit. Vitae amet, minima, laudantium accusantium beatae temporibus odio rem iste, repellat quasi totam dolore itaque ipsam molestias deserunt?</blockquote>
+
+				<blockquote id="q2" class="mm-item-end">Lorem ipsum dolor sit amet consectetur adipisicing elit. Atque, saepe! Corporis quas vitae pariatur et, expedita facere delectus eaque beatae voluptate, in repudiandae sequi.</blockquote>
+
+				<p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Quas saepe totam distinctio reprehenderit earum officiis in id minima. Praesentium excepturi commodi expedita esse! Deleniti eveniet aut fugit commodi ipsum facilis!</p>
+
+				<div class="special-section flow mm-edge-to-edge mm-container">
+					<p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Corrupti autem optio beatae praesentium dolor, perspiciatis incidunt id quas eum unde sequi itaque adipisci quae suscipit natus ipsum ipsam, hic eius.</p>
+
+					<aside class="mm-breakout"><p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Quae corrupti ut at rem, quaerat exercitationem autem id, laborum, praesentium non placeat ipsa fugit ipsam doloribus magni porro quibusdam rerum ullam.</p></aside>
+				</div>
+			</main>
+		</div>
+	</body>
+</html>

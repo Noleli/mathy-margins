@@ -1,0 +1,65 @@
+:where(.mm-container) {
+	& > * {
+		--mm-row-max-size: var(--mm-default-row-max-size, 50rem);
+
+		--mm-gutter: var(--mm-default-gutter, 16px);
+		--mm-gutter-start: var(--mm-default-gutter-start, var(--mm-gutter));
+		--mm-gutter-end: var(--mm-default-gutter-end, var(--mm-gutter));
+
+		--mm-outset: 0px;
+		--mm-outset-start: var(--mm-outset);
+		--mm-outset-end: var(--mm-outset);
+
+		/* this is exposed mostly to be read only, for relative item sizing. */
+		--mm-row-size: calc(100% - var(--_row-margin-start) - var(--_row-margin-end));
+
+		--_item-max-size: var(--mm-item-max-size, var(--_row-actual-max-size));
+		--_item-actual-size: min(var(--_item-max-size), var(--mm-row-size));
+
+		inline-size: var(--_item-actual-size);
+		margin-inline-start: calc(var(--_row-margin-start) + var(--_item-margin-start));
+		margin-inline-end: var(--_row-margin-end);
+	}
+
+	/* row alignment */
+	&.mm-rows-start > *, & > .mm-row-start {
+		--_row-actual-max-size: calc(var(--mm-row-max-size) + var(--mm-outset-end));
+		--_row-margin-start: var(--mm-gutter-start);
+		--_row-margin-end: max(100% - var(--_row-actual-max-size) - var(--mm-gutter-start), var(--mm-gutter-end));
+	}
+
+	&.mm-rows-end > *, & > .mm-row-end {
+		--_row-actual-max-size: calc(var(--mm-row-max-size) + var(--mm-outset-start));
+		--_row-margin-start: max(100% - var(--_row-actual-max-size) - var(--mm-gutter-end), var(--mm-gutter-start));
+		--_row-margin-end: var(--mm-gutter-end);
+	}
+
+	& > *, & > .mm-row-center {
+		--_row-actual-max-size: calc(var(--mm-row-max-size) + var(--mm-outset-start) + var(--mm-outset-end));
+		--_row-margin-start: max((100% - var(--mm-row-max-size)) / 2 - var(--mm-outset-start), var(--mm-gutter-start));
+		--_row-margin-end: max((100% - var(--mm-row-max-size)) / 2 - var(--mm-outset-end), var(--mm-gutter-end));
+	}
+
+	/* item alignment */
+	&.mm-items-start > *, & > .mm-item-start {
+		--_item-margin-start: 0px;
+	}
+
+	&.mm-items-end > *, & > .mm-item-end {
+		--_item-margin-start: calc(var(--mm-row-size) - var(--_item-actual-size));
+	}
+
+	& > *, & > .mm-item-center {
+		--_item-margin-start: calc((var(--mm-row-size) - var(--_item-actual-size)) / 2);
+	}
+
+	/* convenience utilities for common cases */
+	& > .mm-breakout {
+		--mm-outset: calc(var(--mm-row-max-size) * var(--mm-breakout-frac, .04));
+	}
+
+	& > .mm-edge-to-edge {
+		--mm-row-max-size: 100%;
+		--mm-gutter: 0px;
+	}
+}
