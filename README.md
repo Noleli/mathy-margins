@@ -60,4 +60,4 @@ By default, an item occupies an entire row, but you can limit its width. If you 
 ## Notes/known issues
 
 - When setting values for gutters and outsets to 0, you must include a unit. `0px` instead of `0`.
-- Until we get [￼￼`calc-size()`￼￼](https://github.com/w3c/csswg-drafts/blob/main/css-values-5/calc-size-explainer.md) at some point in the future, it will unfortunately not be possible to set item sizes to keywords like `fit-content`. (In fact `calc-size()` and being able to use `justify-items` and `justify-self` in block layouts will greatly improve much about this project.)
+- Until we get [`calc-size()`](https://github.com/w3c/csswg-drafts/blob/main/css-values-5/calc-size-explainer.md) at some point in the future, it will unfortunately not be possible to set item sizes to keywords like `fit-content`. (In fact `calc-size()` and being able to use `justify-items` and `justify-self` in block layouts will greatly improve much about this project.)
