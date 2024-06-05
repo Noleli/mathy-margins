@@ -2,7 +2,7 @@
 
 ## Overview
 
-Mathy Margins is a small CSS “framework” (set of utilitiy classes and custom properties) that handles inline layout within a block container. You can use it to easily create layout breakouts, edge-to-edge content, and more.
+Mathy Margins is a small CSS “framework” (set of utility classes and custom properties) that handles inline layout within a block container. You can use it to easily create layout breakouts, edge-to-edge content, and more.
 
 [Demo](https://codepen.io/noleli/pen/bGyWJaY)
 
